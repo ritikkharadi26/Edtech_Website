@@ -60,93 +60,93 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="mx-auto w-11/12 max-w-[1500px] py-10 border rounded-md bg-richblack-700">
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5 mx-7">My Profile</h1>
-      <div className="flex flex-col lg:flex-row gap-8 m-7">
-        <div className="flex flex-col items-center justify-center rounded-md border border-richblack-700 bg-richblack-800 p-8 px-10">
-          {!imageLoaded && (
-            <div className="aspect-square w-[165px] h-[160px] rounded-md object-cover bg-gray-300" />
-          )}
-          <LazyImage
-            src={user?.image}
-            alt={`profile-${user?.firstName}`}
-            className={`aspect-square w-[165px] h-[160px] rounded-md object-cover ${imageLoaded ? '' : 'hidden'}`}
-            setImageLoaded={setImageLoaded}
-          />
-          <div className="space-y-1 my-3">
-            <p className="text-lg font-semibold text-richblack-5 mx-3">
-              {user?.firstName + " " + user?.lastName}
-            </p>
-            <p className="text-sm mx-3 text-richblack-300">{user?.email}</p>
-          </div>
-          <button
-            onClick={handleNavigate}
-            className="text-richblack-300 hover:scale-105 hover:text-pink-200"
-          >
-            <RiEditBoxLine />
-          </button>
+    <div className="mx-auto w-11/12 max-w-[1500px] py-10 border rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-2xl">
+    <h1 className="mb-14 text-4xl font-bold text-white mx-7 text-center">My Profile</h1>
+    <div className="flex flex-col lg:flex-row gap-8 m-7">
+      <div className="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-10 shadow-lg transform hover:scale-105 transition-transform duration-300">
+        {!imageLoaded && (
+          <div className="aspect-square w-[165px] h-[165px] rounded-full bg-gray-300 animate-pulse" />
+        )}
+        <LazyImage
+          src={user?.image}
+          alt={`profile-${user?.firstName}`}
+          className={`aspect-square w-[165px] h-[165px] rounded-full ${imageLoaded ? '' : 'hidden'}`}
+          setImageLoaded={setImageLoaded}
+        />
+        <div className="space-y-2 my-3 text-center">
+          <p className="text-xl font-semibold text-gray-900">
+            {user?.firstName + " " + user?.lastName}
+          </p>
+          <p className="text-sm text-gray-500">{user?.email}</p>
         </div>
-
-        <div className="flex flex-col w-full gap-6">
-          <div className="rounded-md border border-richblack-700 bg-richblack-800 p-8 px-12">
-            <div className="flex w-full items-center justify-between">
-              <p className="text-lg font-semibold text-richblack-5">About</p>
-              <button
-                onClick={handleNavigate}
-                className="text-richblack-300 hover:scale-105 hover:text-pink-200"
-              >
-                <RiEditBoxLine />
-              </button>
-            </div>
-            <p className={`${user?.additionalDetails?.about ? "text-richblack-5" : "text-richblack-400"} text-sm font-medium`}>
-              {user?.additionalDetails?.about ?? "Write Something About Yourself"}
-            </p>
+        <button
+          onClick={handleNavigate}
+          className="text-gray-500 hover:text-pink-500 transform hover:scale-110 transition-transform duration-300 focus:outline-none"
+        >
+          <RiEditBoxLine size={24} />
+        </button>
+      </div>
+  
+      <div className="flex flex-col w-full gap-6">
+        <div className="rounded-lg border border-gray-200 bg-white p-10 shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <div className="flex w-full items-center justify-between">
+            <p className="text-xl font-semibold text-gray-900">About</p>
+            <button
+              onClick={handleNavigate}
+              className="text-gray-500 hover:text-pink-500 transform hover:scale-110 transition-transform duration-300 focus:outline-none"
+            >
+              <RiEditBoxLine size={24} />
+            </button>
           </div>
-
-          <div className="rounded-md border border-richblack-700 bg-richblack-800 p-8 px-12">
-            <div className="flex w-full items-center justify-between">
-              <p className="text-lg font-semibold text-richblack-5">Personal Details</p>
-              <button
-                onClick={handleNavigate}
-                className="text-richblack-300 hover:scale-105 hover:text-pink-200"
-              >
-                <RiEditBoxLine />
-              </button>
-            </div>
-            <div className="flex flex-col md:flex-row md:justify-between gap-6">
-              <div className="flex flex-col gap-y-5">
-                <div>
-                  <p className="mb-2 text-sm text-richblack-600">First Name</p>
-                  <p className="text-sm font-medium text-richblack-5">{user?.firstName}</p>
-                </div>
-                <div>
-                  <p className="mb-2 text-sm text-richblack-600">Email</p>
-                  <p className="text-sm font-medium text-richblack-5">{user?.email}</p>
-                </div>
-                <div>
-                  <p className="mb-2 text-sm text-richblack-600">Gender</p>
-                  <p className="text-sm font-medium text-richblack-5">{user?.additionalDetails?.gender ?? "Add Gender"}</p>
-                </div>
+          <p className={`${user?.additionalDetails?.about ? "text-gray-800" : "text-gray-400"} text-sm font-medium mt-2`}>
+            {user?.additionalDetails?.about ?? "Write Something About Yourself"}
+          </p>
+        </div>
+  
+        <div className="rounded-lg border border-gray-200 bg-white p-10 shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <div className="flex w-full items-center justify-between">
+            <p className="text-xl font-semibold text-gray-900">Personal Details</p>
+            <button
+              onClick={handleNavigate}
+              className="text-gray-500 hover:text-pink-500 transform hover:scale-110 transition-transform duration-300 focus:outline-none"
+            >
+              <RiEditBoxLine size={24} />
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <div className="space-y-6">
+              <div>
+                <p className="text-sm text-gray-600">First Name</p>
+                <p className="text-sm font-medium text-gray-900">{user?.firstName}</p>
               </div>
-              <div className="flex flex-col gap-y-5">
-                <div>
-                  <p className="mb-2 text-sm text-richblack-600">Last Name</p>
-                  <p className="text-sm font-medium text-richblack-5">{user?.lastName}</p>
-                </div>
-                <div>
-                  <p className="mb-2 text-sm text-richblack-600">Phone Number</p>
-                  <p className="text-sm font-medium text-richblack-5">{user?.additionalDetails?.contactNumber ?? "Add Contact Number"}</p>
-                </div>
-                <div>
-                  <p className="mb-2 text-sm text-richblack-600">Date Of Birth</p>
-                  <p className="text-sm font-medium text-richblack-5">{formattedDate(user?.additionalDetails?.dateOfBirth) ?? "Add Date Of Birth"}</p>
-                </div>
+              <div>
+                <p className="text-sm text-gray-600">Email</p>
+                <p className="text-sm font-medium text-gray-900">{user?.email}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-600">Gender</p>
+                <p className="text-sm font-medium text-gray-900">{user?.additionalDetails?.gender ?? "Add Gender"}</p>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div>
+                <p className="text-sm text-gray-600">Last Name</p>
+                <p className="text-sm font-medium text-gray-900">{user?.lastName}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-600">Phone Number</p>
+                <p className="text-sm font-medium text-gray-900">{user?.additionalDetails?.contactNumber ?? "Add Contact Number"}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-600">Date Of Birth</p>
+                <p className="text-sm font-medium text-gray-900">{formattedDate(user?.additionalDetails?.dateOfBirth) ?? "Add Date Of Birth"}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   );
 };
 
