@@ -6,47 +6,62 @@ const { uploadImageToCloudinary } = require("../utils/ImageUploder");
 const  CourseProgress=require("../models/CourseProgress");
 const Course = require("../models/Course");
 //update profile handler 
+
 exports.updateProfile = async (req, res) => {
-    try {
-        // get data
-        const { dateofBirth= "", about = "", gender, contactNumber } = req.body;
-        //get user id=>>we do not require to take it directly from req because it is already present in req.body in auth 
-        //middleware=> we have added token to user in auth middleware previously in auth controller in login we have added
-        // payload containing userid in token  
-        const userId = req.user.id;
+  try {
+    // Get data from request body
+    const {
+      dateofBirth = "",
+      about = "",
+      gender,
+      contactNumber,
+      firstName = "",
+      lastName = ""
+    } = req.body;
 
-        //validation 
-        if (!gender || !contactNumber) {
-            return res.status(400).json({
-                success: false,
-                message: "All fields are required",
-            });
-        }
+    // Get user ID from request
+    const userId = req.user.id;
 
-        //find profile=>> basically we don't have direct profile id but we do have user id and in user model we have one entry named
-        // additionalDetail reference with object id of profile from here we can find profile id
-        const userDetails = await User.findById(userId );
-        const profileId = userDetails. additionalDetails;
-        
-
-        //update profile=>we have already created temporary profile by giving null value in user in sign in handler in auth controller 
-        //                so we just need to update it. As profile is already present and we just need to update so this the way to update 
-        //                using save(we can also do that by method we always use) 
-        const updatedProfile = await Profile.findByIdAndUpdate(profileId, {dateofBirth, gender, about, contactNumber}, {new:true});
-        const updatedUserDetails = await User.findById(userId).populate("additionalDetails").exec();
-
-        return res.status(200).json({
-          success:true,
-          message:'Profile updated successfully',
-          updatedUserDetails
-        });
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: "Error in updating profile",
-            error: error.message,
-        });
+    // Validation
+    if (!gender || !contactNumber) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
     }
+
+    // Find user details
+    const userDetails = await User.findById(userId);
+    const profileId = userDetails.additionalDetails;
+
+    // Update Profile model
+    const updatedProfile = await Profile.findByIdAndUpdate(
+      profileId,
+      { dateofBirth, gender, about, contactNumber },
+      { new: true }
+    );
+
+    // Update User model
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { firstName, lastName },
+      { new: true }
+    ).populate("additionalDetails").exec();
+
+    console.log("updatedUserDetails ", updatedUser);
+
+    return res.status(200).json({
+      success: true,
+      message: "Profile updated successfully",
+      updatedUserDetails: updatedUser,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Error in updating profile",
+      error: error.message,
+    });
+  }
 };
 
 

@@ -86,11 +86,7 @@ router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
 router.delete("/deleteCourse", deleteCourse)
 router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress);
 
-// ********************************************************************************************************
-//                                      Category routes (Only by Admin)
-// ********************************************************************************************************
-// Category can Only be Created by Admin
-// TODO: Put IsAdmin Middleware here
+
 router.post("/createCategory", auth, isAdmin, createCategory)//done
 router.get("/showAllCategories", showAllCategories) //done
 router.post("/getCategoryPageDetails", categoryPageDetails)
