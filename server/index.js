@@ -11,7 +11,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors"); //to connect with frontend cors=core origin resource sharing
 const {cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv");zz
 const allowedOrigins = [
     "http://localhost:3000",
     "https://edu-plus-full-stack-project-using-mern-ritiks-projects-7cd2a6d2.vercel.app"
