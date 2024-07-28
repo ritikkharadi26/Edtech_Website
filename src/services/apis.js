@@ -1,9 +1,6 @@
-import config from '../config'; // Adjust the path according to your project structure
 
-const environment = 'development'; // Change this to 'production' when deploying
 
-const BASE_URL = config[environment].BASE_URL;
-  
+const BASE_URL = "http://localhost:4000/api/v1";
 // AUTH ENDPOINTS
 export const endpoints = {
   SENDOTP_API: BASE_URL + "/auth/sendotp",
