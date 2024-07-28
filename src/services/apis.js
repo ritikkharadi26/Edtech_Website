@@ -1,6 +1,6 @@
 
 
-const BASE_URL = "http://localhost:4000/api/v1";
+const BASE_URL = "http://localhost:4000/api/v1" ||" https://edu-plus-full-stack-project-using-mern-ritiks-projects-7cd2a6d2.vercel.app";
 // AUTH ENDPOINTS
 export const endpoints = {
   SENDOTP_API: BASE_URL + "/auth/sendotp",
