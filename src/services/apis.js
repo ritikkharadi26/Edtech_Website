@@ -1,8 +1,8 @@
+import config from '../config'; // Adjust the path according to your project structure
 
+const environment = 'development'; // Change this to 'production' when deploying
 
-const BASE_URL = process.env.NODE_ENV === 'development'
-  ? "http://localhost:4000/api/v1"
-  : "https://edu-plus-full-stack-project-using-mern-ritiks-projects-7cd2a6d2.vercel.app/api/v1";
+const BASE_URL = config[environment].BASE_URL;
   
 // AUTH ENDPOINTS
 export const endpoints = {
