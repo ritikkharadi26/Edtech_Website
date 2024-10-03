@@ -14,7 +14,8 @@ const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 const allowedOrigins = [
     "http://localhost:3000",
-    "https://edu-plus-full-stack-project-using-mern-ritiks-projects-7cd2a6d2.vercel.app"
+    "https://edu-plus-full-stack-project-using-mern-ritiks-projects-7cd2a6d2.vercel.app",
+	"https://edu-plus-full-stack-project-using-mern-rrdt.vercel.app"
 ];
 dotenv.config();
 const PORT = process.env.PORT || 4000;
