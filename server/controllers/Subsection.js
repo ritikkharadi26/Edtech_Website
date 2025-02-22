@@ -14,6 +14,7 @@ exports.createSubSection = async (req,res) =>{
               message:'All fields are required',
           });
       }
+      //*** 
 
       const uploadDetails = await uploadImageToCloudinary(video, process.env.FOLDER_NAME);
 

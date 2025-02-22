@@ -12,11 +12,11 @@ const cors = require("cors"); //to connect with frontend cors=core origin resour
 const {cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
-const allowedOrigins = [
-    "http://localhost:3000",
-    "https://edu-plus-full-stack-project-using-mern-ritiks-projects-7cd2a6d2.vercel.app",
-	"https://edu-plus-full-stack-project-using-mern-rrdt.vercel.app"
-];
+// const allowedOrigins = [
+//     "http://localhost:3000",
+//     "https://edu-plus-full-stack-project-using-mern-ritiks-projects-7cd2a6d2.vercel.app",
+// 	"https://edu-plus-full-stack-project-using-mern-rrdt.vercel.app"
+// ];
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
@@ -25,16 +25,10 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ 
-    origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+app.use(cors({
+    origin: "*", // Allows requests from any origin
     methods: ["GET", "PUT", "POST", "DELETE"],
-    credentials: true 
+    credentials: true
 }));
 app.get("/", (req, res) => {
 	return res.json({
