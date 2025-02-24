@@ -1,4 +1,6 @@
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = "https://edtech-website-jkov.onrender.com/api/v1";
+
+
 
 // AUTH ENDPOINTS
 export const endpoints = {

@@ -37,7 +37,8 @@ const Navbar = () => {
           console.log("Printing Sublinks result:", result);
   
           // Now you can safely assume result has the correct structure
-          setSubLinks(result.categories);
+          setSubLinks(result.categories || []);
+
       } catch (error) {
           console.log("Could not fetch the category list:", error.message);
       }
@@ -76,7 +77,7 @@ const Navbar = () => {
                               <IoIosArrowDown/>
 
                               <div className={`invisible absolute left-[50%] 
-                                  translate-x-[-49%] ${subLinks.length ? "translate-y-[15%]" : "translate-y-[40%]"}
+                                  translate-x-[-49%]  ${subLinks?.length > 0 ? "translate-y-[15%]" : "translate-y-[40%]"}
                                top-[50%] z-50 
                               flex flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
                               opacity-0 transition-all duration-200 group-hover:visible
